@@ -1,0 +1,192 @@
+@prefix : <http://fairdatapoint.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix dash: <http://datashapes.org/dash#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+
+:Section1Group
+  a sh:PropertyGroup ;
+  rdfs:label "Description" ;
+  sh:order 0 .
+
+:Section2Group
+  a sh:PropertyGroup ;
+  rdfs:label "Coverage" ;
+  sh:order 1 .
+
+:Section3Group
+  a sh:PropertyGroup ;
+  rdfs:label "License & provenance" ;
+  sh:order 2 .
+
+:Section4Group
+  a sh:PropertyGroup ;
+  rdfs:label "Access" ;
+  sh:order 3 .
+
+:EPLDatasetShape
+  a sh:NodeShape ;
+  rdfs:label "Group 8 – EPL 2024/25 Dataset" ;
+  dct:description "Metadata schema for the FAIRified English Premier League 2024/25 match results dataset." ;
+  sh:targetClass dcat:Dataset ;
+  sh:property [
+    sh:path dct:title ;
+    sh:name "Title" ;
+    sh:nodeKind sh:Literal ;
+    sh:datatype xsd:string ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:order 0 ;
+    dash:editor dash:TextFieldEditor ;
+    sh:group :Section1Group
+  ] ;
+  sh:property [
+    sh:path dct:description ;
+    sh:name "Description" ;
+    sh:nodeKind sh:Literal ;
+    sh:datatype xsd:string ;
+    sh:minCount 1 ;
+    sh:order 1 ;
+    dash:editor dash:TextAreaEditor ;
+    sh:group :Section1Group
+  ] ;
+  sh:property [
+    sh:path dcat:keyword ;
+    sh:name "Keyword" ;
+    sh:nodeKind sh:Literal ;
+    sh:datatype xsd:string ;
+    sh:minCount 1 ;
+    sh:order 2 ;
+    dash:editor dash:TextFieldEditor ;
+    sh:group :Section1Group
+  ] ;
+  sh:property [
+    sh:path dcat:landingPage ;
+    sh:name "Landing Page" ;
+    sh:nodeKind sh:IRI ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:order 3 ;
+    dash:editor dash:URIEditor ;
+    sh:group :Section1Group
+  ] ;
+  sh:property [
+    sh:path dct:identifier ;
+    sh:name "Identifier" ;
+    sh:description "Persistent identifier (W3ID) of the dataset" ;
+    sh:nodeKind sh:Literal ;
+    sh:datatype xsd:anyURI ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:order 4 ;
+    dash:editor dash:TextFieldEditor ;
+    sh:group :Section1Group
+  ] ;
+  sh:property [
+    sh:path dct:temporal ;
+    sh:name "Time period" ;
+    sh:nodeKind sh:BlankNodeOrIRI ;
+    sh:class dct:PeriodOfTime ;
+    sh:node :TimeperiodShape ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:order 0 ;
+    dash:editor dash:DetailsEditor ;
+    sh:group :Section2Group
+  ] ;
+  sh:property [
+    sh:path dct:spatial ;
+    sh:name "Geographic coverage" ;
+    sh:description "Wikidata IRI" ;
+    sh:nodeKind sh:IRI ;
+    sh:maxCount 1 ;
+    sh:order 1 ;
+    dash:editor dash:URIEditor ;
+    sh:group :Section2Group
+  ] ;
+  sh:property [
+    sh:path dct:license ;
+    sh:name "License" ;
+    sh:nodeKind sh:IRI ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:order 0 ;
+    dash:editor dash:URIEditor ;
+    sh:group :Section3Group
+  ] ;
+  sh:property [
+    sh:path dct:creator ;
+    sh:name "Creator" ;
+    sh:nodeKind sh:IRI ;
+    sh:minCount 1 ;
+    sh:order 1 ;
+    dash:editor dash:URIEditor ;
+    sh:group :Section3Group
+  ] ;
+  sh:property [
+    sh:path dct:publisher ;
+    sh:name "Publisher" ;
+    sh:nodeKind sh:IRI ;
+    sh:maxCount 1 ;
+    sh:order 2 ;
+    dash:editor dash:URIEditor ;
+    sh:group :Section3Group
+  ] ;
+  sh:property [
+    sh:path prov:wasDerivedFrom ;
+    sh:name "Derived From" ;
+    sh:nodeKind sh:IRI ;
+    sh:minCount 1 ;
+    sh:order 3 ;
+    dash:editor dash:URIEditor ;
+    sh:group :Section3Group
+  ] ;
+  sh:property [
+    sh:path dct:issued ;
+    sh:name "Date Issued" ;
+    sh:nodeKind sh:Literal ;
+    sh:datatype xsd:date ;
+    sh:maxCount 1 ;
+    sh:order 4 ;
+    dash:editor dash:DatePickerEditor ;
+    sh:group :Section3Group
+  ] ;
+  sh:property [
+    sh:path dcat:distribution ;
+    sh:name "Distribution" ;
+    sh:nodeKind sh:IRI ;
+    sh:minCount 2 ;
+    sh:maxCount 2 ;
+    sh:order 0 ;
+    dash:editor dash:URIEditor ;
+    sh:group :Section4Group
+  ] .
+
+:TimeperiodShape
+  a sh:NodeShape ;
+  sh:targetClass dct:PeriodOfTime ;
+  sh:property [
+    sh:path dcat:startDate ;
+    sh:name "Start date" ;
+    sh:nodeKind sh:Literal ;
+    sh:datatype xsd:date ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:order 0 ;
+    dash:editor dash:DatePickerEditor
+  ] ;
+  sh:property [
+    sh:path dcat:endDate ;
+    sh:name "End date" ;
+    sh:nodeKind sh:Literal ;
+    sh:datatype xsd:date ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:order 1 ;
+    dash:editor dash:DatePickerEditor
+  ] .

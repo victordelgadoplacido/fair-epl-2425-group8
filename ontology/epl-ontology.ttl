@@ -1,0 +1,137 @@
+@prefix : <https://w3id.org/FAIR-course-UT/2025-2026/group8/ont#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@base <https://w3id.org/FAIR-course-UT/2025-2026/group8/ont#> .
+
+<https://w3id.org/FAIR-course-UT/2025-2026/group8/ont> rdf:type owl:Ontology ;
+                                                        dcterms:license <https://opendatacommons.org/licenses/pddl/> ;
+                                                        rdfs:comment "Terms for English Premier League match results not covered by schema.org: goal counts, match outcome and referee."@en ;
+                                                        rdfs:label "EPL match results ontology (Group 8)"@en ;
+                                                        owl:versionInfo "1.0.0" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/license
+dcterms:license rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://w3id.org/FAIR-course-UT/2025-2026/group8/ont#matchOutcome
+:matchOutcome rdf:type owl:ObjectProperty ,
+                       owl:FunctionalProperty ;
+              rdfs:domain schema:SportsEvent ;
+              rdfs:range :MatchOutcome ;
+              rdfs:comment "Final result of the match from the home team’s perspective."@en ;
+              rdfs:label "match outcome"@en .
+
+
+###  https://w3id.org/FAIR-course-UT/2025-2026/group8/ont#referee
+:referee rdf:type owl:ObjectProperty ,
+                  owl:FunctionalProperty ;
+         rdfs:domain schema:SportsEvent ;
+         rdfs:range schema:Person ;
+         rdfs:comment "Person who officiated the match as referee"@en ;
+         rdfs:label "referee"@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://w3id.org/FAIR-course-UT/2025-2026/group8/ont#fullTimeAwayGoals
+:fullTimeAwayGoals rdf:type owl:DatatypeProperty ,
+                            owl:FunctionalProperty ;
+                   rdfs:domain schema:SportsEvent ;
+                   rdfs:range xsd:nonNegativeInteger ;
+                   rdfs:comment "Number of goals scored by the away team at the end of the match."@en ;
+                   rdfs:label "full time away goals"@en .
+
+
+###  https://w3id.org/FAIR-course-UT/2025-2026/group8/ont#fullTimeHomeGoals
+:fullTimeHomeGoals rdf:type owl:DatatypeProperty ,
+                            owl:FunctionalProperty ;
+                   rdfs:domain schema:SportsEvent ;
+                   rdfs:range xsd:nonNegativeInteger ;
+                   rdfs:comment "Number of goals scored by the home team at the end of the match."@en ;
+                   rdfs:label "full time home goals"@en .
+
+
+###  https://w3id.org/FAIR-course-UT/2025-2026/group8/ont#halfTimeAwayGoals
+:halfTimeAwayGoals rdf:type owl:DatatypeProperty ,
+                            owl:FunctionalProperty ;
+                   rdfs:domain schema:SportsEvent ;
+                   rdfs:range xsd:nonNegativeInteger ;
+                   rdfs:comment "Number of goals scored by the away team at half time."@en ;
+                   rdfs:label "half time away goals"@en .
+
+
+###  https://w3id.org/FAIR-course-UT/2025-2026/group8/ont#halfTimeHomeGoals
+:halfTimeHomeGoals rdf:type owl:DatatypeProperty ,
+                            owl:FunctionalProperty ;
+                   rdfs:domain schema:SportsEvent ;
+                   rdfs:range xsd:nonNegativeInteger ;
+                   rdfs:comment "Number of goals scored by the home team at half time."@en ;
+                   rdfs:label "half time home goals"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://schema.org/Person
+schema:Person rdf:type owl:Class .
+
+
+###  https://schema.org/SportsEvent
+schema:SportsEvent rdf:type owl:Class .
+
+
+###  https://w3id.org/FAIR-course-UT/2025-2026/group8/ont#MatchOutcome
+:MatchOutcome rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://w3id.org/FAIR-course-UT/2025-2026/group8/ont#AwayWin
+:AwayWin rdf:type owl:NamedIndividual ,
+                  :MatchOutcome ;
+         rdfs:label "away win"@en .
+
+
+###  https://w3id.org/FAIR-course-UT/2025-2026/group8/ont#Draw
+:Draw rdf:type owl:NamedIndividual ,
+               :MatchOutcome ;
+      rdfs:label "draw"@en .
+
+
+###  https://w3id.org/FAIR-course-UT/2025-2026/group8/ont#HomeWin
+:HomeWin rdf:type owl:NamedIndividual ,
+                  :MatchOutcome ;
+         rdfs:label "home win"@en .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( :AwayWin
+                        :Draw
+                        :HomeWin
+                      )
+] .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
