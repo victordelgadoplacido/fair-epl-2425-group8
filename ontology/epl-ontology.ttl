@@ -1,4 +1,4 @@
-@prefix : <https://w3id.org/FAIR-course-UT/2025-2026/group8/ont#> .
+@prefix : <https://w3id.org/FAIR-course-UT/2026/group08/ont#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
@@ -6,9 +6,9 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@base <https://w3id.org/FAIR-course-UT/2025-2026/group8/ont#> .
+@base <https://w3id.org/FAIR-course-UT/2026/group08/ont#> .
 
-<https://w3id.org/FAIR-course-UT/2025-2026/group8/ont> rdf:type owl:Ontology ;
+<https://w3id.org/FAIR-course-UT/2026/group08/ont> rdf:type owl:Ontology ;
                                                         dcterms:license <https://opendatacommons.org/licenses/pddl/> ;
                                                         rdfs:comment "Terms for English Premier League match results not covered by schema.org: goal counts, match outcome and referee."@en ;
                                                         rdfs:label "EPL match results ontology (Group 8)"@en ;
@@ -26,7 +26,7 @@ dcterms:license rdf:type owl:AnnotationProperty .
 #    Object Properties
 #################################################################
 
-###  https://w3id.org/FAIR-course-UT/2025-2026/group8/ont#matchOutcome
+###  https://w3id.org/FAIR-course-UT/2026/group08/ont#matchOutcome
 :matchOutcome rdf:type owl:ObjectProperty ,
                        owl:FunctionalProperty ;
               rdfs:domain schema:SportsEvent ;
@@ -35,7 +35,7 @@ dcterms:license rdf:type owl:AnnotationProperty .
               rdfs:label "match outcome"@en .
 
 
-###  https://w3id.org/FAIR-course-UT/2025-2026/group8/ont#referee
+###  https://w3id.org/FAIR-course-UT/2026/group08/ont#referee
 :referee rdf:type owl:ObjectProperty ,
                   owl:FunctionalProperty ;
          rdfs:domain schema:SportsEvent ;
@@ -48,7 +48,7 @@ dcterms:license rdf:type owl:AnnotationProperty .
 #    Data properties
 #################################################################
 
-###  https://w3id.org/FAIR-course-UT/2025-2026/group8/ont#fullTimeAwayGoals
+###  https://w3id.org/FAIR-course-UT/2026/group08/ont#fullTimeAwayGoals
 :fullTimeAwayGoals rdf:type owl:DatatypeProperty ,
                             owl:FunctionalProperty ;
                    rdfs:domain schema:SportsEvent ;
@@ -57,7 +57,7 @@ dcterms:license rdf:type owl:AnnotationProperty .
                    rdfs:label "full time away goals"@en .
 
 
-###  https://w3id.org/FAIR-course-UT/2025-2026/group8/ont#fullTimeHomeGoals
+###  https://w3id.org/FAIR-course-UT/2026/group08/ont#fullTimeHomeGoals
 :fullTimeHomeGoals rdf:type owl:DatatypeProperty ,
                             owl:FunctionalProperty ;
                    rdfs:domain schema:SportsEvent ;
@@ -66,7 +66,7 @@ dcterms:license rdf:type owl:AnnotationProperty .
                    rdfs:label "full time home goals"@en .
 
 
-###  https://w3id.org/FAIR-course-UT/2025-2026/group8/ont#halfTimeAwayGoals
+###  https://w3id.org/FAIR-course-UT/2026/group08/ont#halfTimeAwayGoals
 :halfTimeAwayGoals rdf:type owl:DatatypeProperty ,
                             owl:FunctionalProperty ;
                    rdfs:domain schema:SportsEvent ;
@@ -75,7 +75,7 @@ dcterms:license rdf:type owl:AnnotationProperty .
                    rdfs:label "half time away goals"@en .
 
 
-###  https://w3id.org/FAIR-course-UT/2025-2026/group8/ont#halfTimeHomeGoals
+###  https://w3id.org/FAIR-course-UT/2026/group08/ont#halfTimeHomeGoals
 :halfTimeHomeGoals rdf:type owl:DatatypeProperty ,
                             owl:FunctionalProperty ;
                    rdfs:domain schema:SportsEvent ;
@@ -96,7 +96,7 @@ schema:Person rdf:type owl:Class .
 schema:SportsEvent rdf:type owl:Class .
 
 
-###  https://w3id.org/FAIR-course-UT/2025-2026/group8/ont#MatchOutcome
+###  https://w3id.org/FAIR-course-UT/2026/group08/ont#MatchOutcome
 :MatchOutcome rdf:type owl:Class .
 
 
@@ -104,19 +104,19 @@ schema:SportsEvent rdf:type owl:Class .
 #    Individuals
 #################################################################
 
-###  https://w3id.org/FAIR-course-UT/2025-2026/group8/ont#AwayWin
+###  https://w3id.org/FAIR-course-UT/2026/group08/ont#AwayWin
 :AwayWin rdf:type owl:NamedIndividual ,
                   :MatchOutcome ;
          rdfs:label "away win"@en .
 
 
-###  https://w3id.org/FAIR-course-UT/2025-2026/group8/ont#Draw
+###  https://w3id.org/FAIR-course-UT/2026/group08/ont#Draw
 :Draw rdf:type owl:NamedIndividual ,
                :MatchOutcome ;
       rdfs:label "draw"@en .
 
 
-###  https://w3id.org/FAIR-course-UT/2025-2026/group8/ont#HomeWin
+###  https://w3id.org/FAIR-course-UT/2026/group08/ont#HomeWin
 :HomeWin rdf:type owl:NamedIndividual ,
                   :MatchOutcome ;
          rdfs:label "home win"@en .

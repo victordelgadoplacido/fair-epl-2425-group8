@@ -1,0 +1,14 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+
+<https://w3id.org/FAIR-course-UT/2025-2026/group8/metadata/distribution-original> a dcat:Distribution ;
+    dct:title "EPL 2024/25 match results (original CSV)" ;
+    dct:description "Original 22-column CSV as published on DataHub, preserved unchanged." ;
+    dcat:downloadURL <https://w3id.org/FAIR-course-UT/2025-2026/group8/original> ;
+    dcat:mediaType <https://www.iana.org/assignments/media-types/text/csv> ;
+    dct:format "CSV" ;
+    dcat:byteSize 30316 ;
+    dct:license <https://opendatacommons.org/licenses/pddl/> ;
+    prov:wasDerivedFrom <https://datahub.io/football/english-premier-league/_r/-/season-2425.csv> .
